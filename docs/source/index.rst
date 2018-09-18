@@ -14,9 +14,10 @@
 ======
 
 .. toctree::
-    addons.textmessage.rst
-    addon.simplehandler.rst
-    addons.inlinekeyboardmarkupext.rst
+    addons.textmessage
+    addon.simplehandler
+    addons.inlinekeyboardmarkupext
+    addon.callbackdataserializer
 
 
 

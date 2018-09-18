@@ -11,26 +11,6 @@ message = TextMessage("Hello world!", reply_markup=generate_markup)
 update.message.reply_text(**message)
 ```
 
-## Компоненты
-
-#### SimpleHandler
-
-Удобный способ структурирования кода. Все связанные по смыслу обработчики помещаются в наследника
- данного класса.
-
-```Python
-class HelpHandler(SimpleHandler):
-
-  def bind_handlers(self, dispatcher):
-    dispatcher.add_handler(CommandHandler("help", help))
-
-  def help(self, bot, update):
-    update.message.reply_text("Type /start for start")
-
-HelpHandler(dispatcher)
-dispatcher.start_polling()
-```
-
 #### InlineKeyboardMarkupExt
 
 Переопределяет `InlineKeyboardMarkup`, добавляя возможность
@@ -52,3 +32,23 @@ message = TextMessage("Example `InlineKeyboardMarkupExt`",
 ```
 
 ![pic](./assets/inlinekeyboardmarkupext.png)
+
+## Компоненты
+
+#### SimpleHandler
+
+Удобный способ структурирования кода. Все связанные по смыслу обработчики помещаются в наследника
+ данного класса.
+
+```Python
+class HelpHandler(SimpleHandler):
+
+  def bind_handlers(self, dispatcher):
+    dispatcher.add_handler(CommandHandler("help", help))
+
+  def help(self, bot, update):
+    update.message.reply_text("Type /start for start")
+
+HelpHandler(dispatcher)
+dispatcher.start_polling()
+```
