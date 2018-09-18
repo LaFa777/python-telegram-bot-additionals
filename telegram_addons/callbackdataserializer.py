@@ -45,7 +45,8 @@ class CallbackDataSerializer:
         """Оставшееся пустое пространство можно использовать под данные.
         """
         if data is not None and len(data) >= 55:
-            raise ValueError("callback_data too long. Please reduce to 53 bytes(symbols)")
+            raise ValueError(
+                "callback_data too long ({} symbols). Please reduce to 55 bytes(symbols)".format(len(data)))
 
         self._data = data
         return self

@@ -18,6 +18,7 @@
     addon.simplehandler
     addons.inlinekeyboardmarkupext
     addon.callbackdataserializer
+    addon.conversationhandlerext
 
 
 
