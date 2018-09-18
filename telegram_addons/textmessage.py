@@ -5,10 +5,6 @@ class TextMessage(UserDict):
     """Просто удобная обертка над аргументами для функций типа :meth:`telegram.Bot.send_message`,
     :meth:`telegram.Bot.edit_message_text` или :meth:`telegram.Message.reply_text`.
     При передаче объект необходимо распаковать.
-
-    Пример:
-        >>> msg = TextMessage("Hello world!")
-        >>> bot.send_message(chat_id=update.message.chat_id, **msg)
     """
 
     def __init__(self,

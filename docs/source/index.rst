@@ -16,6 +16,7 @@
 .. toctree::
     addons.textmessage.rst
     addon.simplehandler.rst
+    addons.inlinekeyboardmarkupext.rst
 
 
 

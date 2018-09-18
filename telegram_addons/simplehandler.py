@@ -4,18 +4,6 @@ class SimpleHandler:
     При субклассировании должны быть реализованы:
     1. Функция bind_handlers, цепляющая обработчики к dispatcher.
     2. Коолбеки, к которым происходит биндинг в bind_handlers
-
-    Пример:
-        >>> class HelpHandler(SimpleHandler):
-        ...
-        ...   def bind_handlers(self, dispatcher):
-        ...     dispatcher.add_handler(CommandHandler("help", help))
-        ...
-        ...   def help(self, bot, update):
-        ...     update.message.reply_text("Type /start for start")
-        ...
-        >>> HelpHandler(dispatcher)
-        >>> dispatcher.start_polling()
     """
 
     def __init__(self, dispatcher, bind_handlers=True):
