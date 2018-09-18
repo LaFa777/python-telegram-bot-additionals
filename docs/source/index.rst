@@ -15,6 +15,7 @@
 
 .. toctree::
     addons.textmessage.rst
+    addon.simplehandler.rst
 
 
 
