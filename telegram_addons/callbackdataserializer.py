@@ -33,35 +33,45 @@ class CallbackDataSerializer:
         """Устанавливает соль для последующего хеширования
         """
         self._salt = salt
+
+        # fluent interface
         return self
 
     def set_command(self, command):
         """Устанавливает строковое значение, которое будет использоваться в формировании хеша.
         """
         self._command = command
+
+        # fluent interface
         return self
 
     def set_data(self, data):
-        """Оставшееся пустое пространство можно использовать под данные.
+        """Устанавливает данные, которые не будут хешированы и будут переданы как есть.
         """
         if data is not None and len(data) >= 55:
-            raise ValueError(
-                "callback_data too long ({} symbols). Please reduce to 55 bytes(symbols)".format(len(data)))
+            raise ValueError("callback_data too long ({} symbols). "
+                             "Please reduce to 55 bytes(symbols)".format(len(data)))
 
         self._data = data
+
+        # fluent interface
         return self
 
     def dumps(self, only_hash=False):
         """Создает строку формата "hash:data", где:
           hash - уникальный хеш (соль + команда) (8 символов)
           data - данные (0-55 символа)
+
+        Attributes:
+            only_hash (``bool``): выводить только "hash:" (нужно для ``CallbackQueryHandlerExt``)
         """
-        # нет смысла хешировать если не задано ключевое значение
+        # нет смысла хешировать если не задано ключевое значение для хеширования
         if not self._command:
             raise ValueError("Please setup \"command\" parametr using \".set_command(command)\".")
 
-        hash_str = self._salt + self._command
-        hash_str = hash64(hash_str)
+        hash_value = self._salt + self._command
+        hash_str = hash64(hash_value)
+
         if only_hash:
             return "{}:".format(hash_str)
         else:
