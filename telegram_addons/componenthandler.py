@@ -33,7 +33,9 @@ class ComponentHandler(SimpleHandler):
         else:
             self._callback_data_serializer = CallbackDataSerializer()
 
-        self._callback_data_serializer.set_salt(component_name)
+        self._callback_data_serializer.set_name(component_name)
+
+        self._component_name = component_name
 
         # если dispatcher is DispatcherProxy, то скопируем, а не наследуем, дабы избежать
         # многократного выполнения DispatcherProxy.add_handler

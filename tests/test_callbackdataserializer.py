@@ -9,7 +9,7 @@ class TestCallbackDataSerializer(unittest.TestCase):
         hash_str = "26f0e66:"
 
         ds = CallbackDataSerializer()
-        ds.set_salt("some_component")
+        ds.set_name("some_component")
         ds.set_command("add")
         self.assertEqual(ds.dumps(), hash_str)
 
@@ -23,7 +23,7 @@ class TestCallbackDataSerializer(unittest.TestCase):
         data = "12345"
 
         ds = CallbackDataSerializer()
-        ds.set_salt("some_component")
+        ds.set_name("some_component")
         ds.set_command("add")
         ds.set_data(data)
 

@@ -98,7 +98,7 @@ class DispatcherProxy(Dispatcher):
 
         # проксируем аргумент `telegram.Bot` для всех обработчиков
         # как правило serializer определен только для компонентов
-        if serializer:
+        if serializer and not isinstance(handler, ConversationHandler):
             handler.callback = wrapped_bot_and_update_proxy(serializer, handler.callback)
 
         self._dispatcher.add_handler(handler, group)

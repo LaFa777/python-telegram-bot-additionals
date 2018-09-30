@@ -7,7 +7,7 @@ class InlineKeyboardButtonExt(InlineKeyboardButton):
     Параметр command используется для последующего преобразования ``callback_data`` в ``BotProxy``.
     """
 
-    def __init__(self, text, command, *args, **kwargs):
+    def __init__(self, text, command=None, *args, **kwargs):
         self.command = command
         super().__init__(text, *args, **kwargs)
 

@@ -14,25 +14,25 @@ class CallbackDataSerializer:
     для создания уникальной хеш-маски.
     """
 
-    def __init__(self, salt=""):
+    def __init__(self, name=""):
         """
         Attributes:
             salt (`str`): Любое строковое значение
         """
-        self._salt = salt
+        self._name = name
         self.reset()
 
     def reset(self):
         """Сбрасывает все параметры
         """
-        self._salt = ""
-        self._command = None
+        self._name = ""
+        self._command = ""
         self._data = ""
 
-    def set_salt(self, salt):
+    def set_name(self, name):
         """Устанавливает соль для последующего хеширования
         """
-        self._salt = salt
+        self._name = name
 
         # fluent interface
         return self
@@ -66,10 +66,12 @@ class CallbackDataSerializer:
             only_hash (``bool``): выводить только "hash:" (нужно для ``CallbackQueryHandlerExt``)
         """
         # нет смысла хешировать если не задано ключевое значение для хеширования
-        if not self._command:
-            raise ValueError("Please setup \"command\" parametr using \".set_command(command)\".")
+        if not self._name:
+            raise ValueError("Please setup \"name\" parametr using \".set_name(name)\".")
 
-        hash_value = self._salt + self._command
+        hash_value = self._name
+        if self._command:
+            hash_value = hash_value + self._command
         hash_str = hash64(hash_value)
 
         if only_hash:

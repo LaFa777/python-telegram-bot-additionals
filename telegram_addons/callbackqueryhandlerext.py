@@ -4,8 +4,8 @@ from telegram.ext import CallbackQueryHandler
 class CallbackQueryHandlerExt:
 
     def __init__(self,
-                 command,
+                 command=None,
                  *args,
                  **kwargs):
-        self.command = command
+        self.command = command or ""
         self.handler = CallbackQueryHandler(*args, **kwargs)
